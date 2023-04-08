@@ -1,9 +1,9 @@
 import { Task } from "./types"
 
-const createTaskElement = (taskTitle: string): HTMLLIElement => {
+const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => {
   const taskItem = document.createElement("li")
   taskItem.classList.add("task-item")
-  taskItem.setAttribute("data-id", "1")
+  taskItem.setAttribute("data-id", `${taskId}`)
 
   const taskItemContent = document.createElement("div")
   taskItemContent.classList.add("task-item-content flex justify-between items-center h-10 px-2 bg-slate-800 border-slate-500 border-b")
@@ -25,7 +25,7 @@ const createTaskElement = (taskTitle: string): HTMLLIElement => {
 
 // Rrenders Tasks
 const renderTasks = (tasks: Task[], tasksContainer: HTMLUListElement) => {
-  tasks.forEach(task => tasksContainer.innerHTML += createTaskElement(task.title))
+  tasks.forEach(task => tasksContainer.innerHTML += createTaskElement(task.id, task.title))
 }
 
 export default renderTasks
