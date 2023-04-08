@@ -1,5 +1,5 @@
 - [x] Create Task type
-- [] Create an array of tasks
+- [x] Create an array of tasks
 - [] Implement UI rendering tasks
 - [] Create a function that gets user inputs and renders the new task
 - [] Create a function that delete a task
