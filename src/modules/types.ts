@@ -3,6 +3,4 @@ type Task = {
   title: string
 }
 
-const tasks: Task[] = []
-
-export { Task, tasks }
+export { Task }
