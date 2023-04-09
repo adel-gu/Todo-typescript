@@ -33,4 +33,4 @@ const renderTasks = (tasks: Task[], tasksContainer: HTMLUListElement) => {
   tasks.forEach(task => tasksContainer.innerHTML += createTaskElement(task.id, task.title))
 }
 
-export default renderTasks
+export { renderTasks, deleteTaskElement }
