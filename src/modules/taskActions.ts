@@ -9,16 +9,22 @@ const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
   form?.addEventListener("submit", (e) => {
     e.preventDefault()
 
+    // Get form input value
+    const formData = new FormData(form)
+    const taskTitle = Object.fromEntries(formData).title.toString()
+
     // Check if input is empty
-    const taskTitle: string = form.title.value
     if (taskTitle === "" || taskTitle === " ") return
 
     // Create task of type Task
-    const taskId: number = tasks.length
+    const taskId = tasks.length
 
+    // Update tasks array
     tasks = addTaskItemToTasks(tasks, taskTitle, taskId)
-    tasksContainer.innerHTML = ""
+
+    // Render tasks
     renderTasks(tasks, tasksContainer)
+    form.reset()
   })
 }
 
