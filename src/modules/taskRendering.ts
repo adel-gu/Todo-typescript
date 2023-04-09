@@ -1,4 +1,8 @@
-import { Task } from "./types"
+import { Task, elementDivClasses, elementDeletBtnClasses } from "./types"
+
+const addElementClasses = (classesArr: string[], htmlElement: HTMLElement) => {
+  classesArr.forEach(classStr => htmlElement.classList.add(classStr))
+}
 
 const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => {
   const taskItem = document.createElement("li")
@@ -6,14 +10,14 @@ const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => 
   taskItem.setAttribute("data-id", `${taskId}`)
 
   const taskItemContent = document.createElement("div")
-  // taskItemContent.classList.add("task-item-content flex justify-between items-center h-10 px-2 bg-slate-800 border-slate-500 border-b")
+  addElementClasses(elementDivClasses, taskItemContent)
 
   const title = document.createElement("p")
   title.textContent = taskTitle
 
   const deleteBtn = document.createElement("button")
   deleteBtn.textContent = "Delete"
-  // deleteBtn.classList.add("text-red-500 active:text-slate-700")
+  addElementClasses(elementDeletBtnClasses, deleteBtn)
 
   // Append childes
   taskItem.appendChild(taskItemContent)
