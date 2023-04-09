@@ -23,6 +23,11 @@ const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => 
   return taskItem
 }
 
+// Delete Task Item
+const deleteTaskElement = (tasks: Task[], taskId: number): Task[] => {
+  return tasks.filter(task => task.id !== taskId)
+}
+
 // Rrenders Tasks
 const renderTasks = (tasks: Task[], tasksContainer: HTMLUListElement) => {
   tasks.forEach(task => tasksContainer.innerHTML += createTaskElement(task.id, task.title))
