@@ -22,6 +22,9 @@ const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
     // Update tasks array
     tasks = addTaskItemToTasks(tasks, taskTitle, taskId)
 
+    // Empty tasks container
+    tasksContainer.innerHTML = ""
+
     // Render tasks
     renderTasks(tasks, tasksContainer)
     form.reset()
