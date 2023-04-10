@@ -1,7 +1,7 @@
 import { tasksFromLS } from "./modules/localstorage"
 import { addAction, deleteAction } from "./modules/taskActions"
 import { renderTasks } from "./modules/taskRendering"
-import { Task } from "./modules/types"
+import Task from "./modules/types"
 
 const form = document.querySelector("form") as HTMLFormElement
 const taskContainer = document.querySelector(".task-list") as HTMLUListElement
