@@ -1,10 +1,11 @@
-import { Task } from "./types"
+import Task from "./types"
 
 // Add Task Item
 const addTaskItemToTasks = (tasks: Task[], title: string, id: number): Task[] => {
   const task: Task = {
     title,
-    id
+    id,
+    completed: false
   }
   tasks.push(task)
   return tasks
