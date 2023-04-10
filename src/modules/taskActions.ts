@@ -1,12 +1,13 @@
-import { refreshLocalStorageTasks } from "./localstorage"
-import { renderTasks } from "./taskRendering"
+import { tasksFromLS ,refreshLocalStorageTasks } from "./localstorage"
 import { addTaskItemToTasks, deleteTaskItemFromTasks } from "./taskServices"
-import { Task } from "./types"
+import { renderTasks } from "./taskRendering"
 
 // Form => creates Task and render the task UI
-const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement, tasks: Task[]) => {
+const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
   form?.addEventListener("submit", (e) => {
     e.preventDefault()
+    // Get tasks
+    let tasks = tasksFromLS()
 
     // Get form input value
     const formData = new FormData(form)
@@ -31,7 +32,8 @@ const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement, task
   })
 }
 
-const deleteAction = (deleteBtn: HTMLButtonElement, tasksContainer: HTMLUListElement, tasks: Task[]) => {
+const deleteAction = (deleteBtn: HTMLButtonElement, tasksContainer: HTMLUListElement) => {
+  let tasks = tasksFromLS()
   // Get task Id from the pressed button
   const taskId = Number(deleteBtn.dataset["id"])
 
