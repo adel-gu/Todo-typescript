@@ -18,11 +18,13 @@ const createTaskElement = (taskId: number, taskTitle: string, taskCompleted: boo
   check.type = "checkbox"
   check.checked = taskCompleted
   addElementClasses(Styles.elementCheckBoxClasses, check)
+  check.setAttribute("data-id", `${taskId}`)
 
   const title = document.createElement("p")
   title.textContent = taskTitle
   addElementClasses(Styles.elementTitleClasses, title)
   if (taskCompleted) addElementClasses(Styles.elementTitleCompletedClasses, title)
+  title.setAttribute("data-id", `${taskId}`)
 
   const checkTitleContainer = document.createElement("div")
   addElementClasses(Styles.elementCheckTitleDivClasses, checkTitleContainer)
