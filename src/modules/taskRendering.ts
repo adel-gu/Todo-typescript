@@ -7,7 +7,7 @@ const addElementClasses = (classesArr: string[], htmlElement: HTMLElement) => {
 }
 
 // Create the html element for the task
-const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => {
+const createTaskElement = (taskId: number, taskTitle: string, taskCompleted: boolean): HTMLLIElement => {
   const taskItem = document.createElement("li")
   taskItem.classList.add("task-item")
 
@@ -16,11 +16,13 @@ const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => 
 
   const check = document.createElement("input")
   check.type = "checkbox"
+  check.checked = taskCompleted
   addElementClasses(Styles.elementCheckBoxClasses, check)
 
   const title = document.createElement("p")
   title.textContent = taskTitle
   addElementClasses(Styles.elementTitleClasses, title)
+  if (taskCompleted) addElementClasses(Styles.elementTitleCompletedClasses, title)
 
   const checkTitleContainer = document.createElement("div")
   addElementClasses(Styles.elementCheckTitleDivClasses, checkTitleContainer)
@@ -41,7 +43,7 @@ const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => 
 
 // Rrenders Tasks
 const renderTasks = (tasks: Task[], tasksContainer: HTMLUListElement) => {
-  tasks.forEach(task => tasksContainer.appendChild(createTaskElement(task.id, task.title)))
+  tasks.forEach(task => tasksContainer.appendChild(createTaskElement(task.id, task.title, task.completed)))
 }
 
 export { renderTasks }
