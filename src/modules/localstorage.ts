@@ -1,7 +1,7 @@
 import { Task } from "./types"
 
-// Set a localstorage for task if its null
-const setLocalStorageTasks = (): Task[] => {
+// get from localstorage for task if its null set it
+const updatesFromLSTasks = (): Task[] => {
   const tasks: Task[] = JSON.parse(localStorage.getItem("tasks") || "[]")
   return tasks
 }
@@ -11,4 +11,4 @@ const refreshLocalStorageTasks = (tasks: Task[]) => {
   localStorage.setItem("tasks", JSON.stringify(tasks))
 }
 
-export { refreshLocalStorageTasks, setLocalStorageTasks }
+export { refreshLocalStorageTasks, updatesFromLSTasks }
