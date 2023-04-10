@@ -1,4 +1,5 @@
-import { Task, elementDivClasses, elementDeletBtnClasses, elementCheckBoxClasses } from "./types"
+import * as Styles from "./types"
+import Task from "./types"
 
 // Add classes to an html element
 const addElementClasses = (classesArr: string[], htmlElement: HTMLElement) => {
@@ -11,24 +12,29 @@ const createTaskElement = (taskId: number, taskTitle: string): HTMLLIElement => 
   taskItem.classList.add("task-item")
 
   const taskItemContent = document.createElement("div")
-  addElementClasses(elementDivClasses, taskItemContent)
+  addElementClasses(Styles.elementDivClasses, taskItemContent)
 
   const check = document.createElement("input")
   check.type = "checkbox"
-  addElementClasses(elementCheckBoxClasses, check)
+  addElementClasses(Styles.elementCheckBoxClasses, check)
 
   const title = document.createElement("p")
   title.textContent = taskTitle
+  addElementClasses(Styles.elementTitleClasses, title)
+
+  const checkTitleContainer = document.createElement("div")
+  addElementClasses(Styles.elementCheckTitleDivClasses, checkTitleContainer)
+  checkTitleContainer.appendChild(check)
+  checkTitleContainer.appendChild(title)
 
   const deleteBtn = document.createElement("button")
   deleteBtn.textContent = "Delete"
-  addElementClasses(elementDeletBtnClasses, deleteBtn)
+  addElementClasses(Styles.elementDeletBtnClasses, deleteBtn)
   deleteBtn.setAttribute("data-id", `${taskId}`)
 
   // Append childes
   taskItem.appendChild(taskItemContent)
-  taskItemContent.appendChild(check)
-  taskItemContent.appendChild(title)
+  taskItemContent.appendChild(checkTitleContainer)
   taskItemContent.appendChild(deleteBtn)
   return taskItem
 }
