@@ -1,11 +1,10 @@
+import { refreshLocalStorageTasks } from "./localstorage"
 import { renderTasks } from "./taskRendering"
 import { addTaskItemToTasks, deleteTaskItemFromTasks } from "./taskServices"
 import { Task } from "./types"
 
-let tasks: Task[] = []
-
 // Form => creates Task and render the task UI
-const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
+const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement, tasks: Task[]) => {
   form?.addEventListener("submit", (e) => {
     e.preventDefault()
 
@@ -27,15 +26,26 @@ const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
 
     // Render tasks
     renderTasks(tasks, tasksContainer)
+    refreshLocalStorageTasks(tasks)
     form.reset()
   })
 }
 
-const deleteAction = (deleteBtn: HTMLButtonElement, tasksContainer: HTMLUListElement) => {
+const deleteAction = (deleteBtn: HTMLButtonElement, tasksContainer: HTMLUListElement, tasks: Task[]) => {
+  // Get task Id from the pressed button
   const taskId = Number(deleteBtn.dataset["id"])
+
+  // Delete the task from the array
   tasks = deleteTaskItemFromTasks(tasks, taskId)
+
+  // Empty the tasks dom container
   tasksContainer.innerHTML = ""
+
+  // Render tasks to the dom
   renderTasks(tasks, tasksContainer)
+
+  // Refresh the array in localstorage
+  refreshLocalStorageTasks(tasks)
 }
 
 export { addAction, deleteAction }
