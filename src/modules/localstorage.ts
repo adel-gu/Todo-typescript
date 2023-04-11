@@ -1,4 +1,4 @@
-import { Task } from "./types"
+import Task from "./types"
 
 // get from localstorage for task if its null set it
 const tasksFromLS = (): Task[] => {
