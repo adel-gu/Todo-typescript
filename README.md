@@ -85,7 +85,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone git@github.com:adel-gu/todo-typescript.git
+  git clone git@github.com:adel-gu/Todo-typescript.git
 ```
 
 ### Install
@@ -93,14 +93,14 @@ Clone this repository to your desired folder:
 - Install this project using yarn:
 
 ```sh
-  cd todo-typescript
+  cd Todo-typescript
   yarn install
 ```
 
 - And if you are using npm, ensure to delete the file **[yarn.lock]** and run:
 
 ```sh
-  cd todo-typescript
+  cd Todo-typescript
   npm install
 ```
 
