@@ -21,7 +21,7 @@ const deleteTaskItemFromTasks = (tasks: Task[], taskId: number): Task[] => {
 // Completed Task
 const setCompleteTask = (taskId: number, tasks: Task[]): Task[] => {
   return tasks.map(task => {
-    if (task.id === taskId) task.completed = true
+    if (task.id === taskId) task.completed = !task.completed
     return task
   })
 }
