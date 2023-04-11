@@ -56,6 +56,9 @@ const completeAction = (checkbox: HTMLInputElement, tasksContainer: HTMLUListEle
   const taskId = Number(checkbox.dataset["id"])
   tasks = setCompleteTask(taskId, tasks)
 
+  // Empty container
+  tasksContainer.innerHTML = ""
+
   // Render tasks to the dom
   renderTasks(tasks, tasksContainer)
 
