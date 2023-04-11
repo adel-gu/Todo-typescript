@@ -10,7 +10,7 @@ const elementDeletBtnClasses: string[] = ["delete-btn", "text-red-500", "active:
 
 const elementCheckBoxClasses: string[] = ["check-completed", "accent-pink-500", "rounded", "w-4", "h-4", "focus:ring-pink-500", "focus:focus:ring-2", "cursor-pointer"]
 
-const elementTitleClasses: string[] = ["w-full"]
+const elementTitleClasses: string[] = ["task-title", "w-full", "cursor-text", "outline-none"]
 const elementTitleCompletedClasses: string[] = ["line-through", "text-slate-500"]
 
 const elementCheckTitleDivClasses: string[] = ["flex", "gap-3", "items-center", "grow"]
