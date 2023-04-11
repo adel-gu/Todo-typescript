@@ -1,6 +1,7 @@
 import { tasksFromLS ,refreshLocalStorageTasks } from "./localstorage"
 import { addTaskItemToTasks, deleteTaskItemFromTasks, setCompleteTask, updateEditedTask } from "./taskServices"
 import { renderTasks } from "./taskRendering"
+import Task from "./types"
 
 // Form => creates Task and render the task UI
 const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
@@ -22,12 +23,7 @@ const addAction = (form: HTMLFormElement, tasksContainer: HTMLUListElement) => {
     // Update tasks array
     tasks = addTaskItemToTasks(tasks, taskTitle, taskId)
 
-    // Empty tasks container
-    tasksContainer.innerHTML = ""
-
-    // Render tasks
-    renderTasks(tasks, tasksContainer)
-    refreshLocalStorageTasks(tasks)
+    sharedActions(tasks, tasksContainer)
     form.reset()
   })
 }
@@ -40,14 +36,7 @@ const deleteAction = (deleteBtn: HTMLButtonElement, tasksContainer: HTMLUListEle
   // Delete the task from the array
   tasks = deleteTaskItemFromTasks(tasks, taskId)
 
-  // Empty the tasks dom container
-  tasksContainer.innerHTML = ""
-
-  // Render tasks to the dom
-  renderTasks(tasks, tasksContainer)
-
-  // Refresh the array in localstorage
-  refreshLocalStorageTasks(tasks)
+  sharedActions(tasks, tasksContainer)
 }
 
 // Check a task
@@ -56,14 +45,7 @@ const completeAction = (checkbox: HTMLInputElement, tasksContainer: HTMLUListEle
   const taskId = Number(checkbox.dataset["id"])
   tasks = setCompleteTask(taskId, tasks)
 
-  // Empty container
-  tasksContainer.innerHTML = ""
-
-  // Render tasks to the dom
-  renderTasks(tasks, tasksContainer)
-
-  // Refresh the array in localstorage
-  refreshLocalStorageTasks(tasks)
+  sharedActions(tasks, tasksContainer)
 }
 
 // Check a task
@@ -72,6 +54,17 @@ const editAction = (taskP: HTMLParagraphElement, tasksContainer: HTMLUListElemen
   const taskId = Number(taskP.dataset["id"])
   const taskTitle = taskP.textContent as string
   tasks = updateEditedTask(taskId, taskTitle, tasks)
+
+  // Refresh the array in localstorage
+  refreshLocalStorageTasks(tasks)
+}
+
+const sharedActions = (tasks: Task[], tasksContainer: HTMLUListElement) => {
+  // Empty container
+  tasksContainer.innerHTML = ""
+
+  // Render tasks to the dom
+  renderTasks(tasks, tasksContainer)
 
   // Refresh the array in localstorage
   refreshLocalStorageTasks(tasks)
