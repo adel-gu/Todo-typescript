@@ -18,9 +18,17 @@ const deleteTaskItemFromTasks = (tasks: Task[], taskId: number): Task[] => {
   return tasks
 }
 
+// Completed Task
+const setCompleteTask = (taskId: number, tasks: Task[]): Task[] => {
+  return tasks.map(task => {
+    if (task.id === taskId) task.completed = true
+    return task
+  })
+}
+
 // Update task id
 const updateTaskId = (tasks: Task[]) => {
   tasks.map(task => task.id = tasks.indexOf(task))
 }
 
-export { addTaskItemToTasks, deleteTaskItemFromTasks }
+export { addTaskItemToTasks, deleteTaskItemFromTasks, setCompleteTask }
