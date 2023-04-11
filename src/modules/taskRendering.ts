@@ -25,6 +25,7 @@ const createTaskElement = (taskId: number, taskTitle: string, taskCompleted: boo
   addElementClasses(Styles.elementTitleClasses, title)
   if (taskCompleted) addElementClasses(Styles.elementTitleCompletedClasses, title)
   title.setAttribute("data-id", `${taskId}`)
+  title.setAttribute("contenteditable", "true")
 
   const checkTitleContainer = document.createElement("div")
   addElementClasses(Styles.elementCheckTitleDivClasses, checkTitleContainer)
