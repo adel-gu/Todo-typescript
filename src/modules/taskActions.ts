@@ -1,5 +1,5 @@
 import { tasksFromLS ,refreshLocalStorageTasks } from "./localstorage"
-import { addTaskItemToTasks, deleteTaskItemFromTasks } from "./taskServices"
+import { addTaskItemToTasks, deleteTaskItemFromTasks, setCompleteTask } from "./taskServices"
 import { renderTasks } from "./taskRendering"
 
 // Form => creates Task and render the task UI
@@ -50,4 +50,17 @@ const deleteAction = (deleteBtn: HTMLButtonElement, tasksContainer: HTMLUListEle
   refreshLocalStorageTasks(tasks)
 }
 
-export { addAction, deleteAction }
+// Check a task
+const completeAction = (checkbox: HTMLInputElement, tasksContainer: HTMLUListElement) => {
+  let tasks = tasksFromLS()
+  const taskId = Number(checkbox.dataset["id"])
+  tasks = setCompleteTask(taskId, tasks)
+
+  // Render tasks to the dom
+  renderTasks(tasks, tasksContainer)
+
+  // Refresh the array in localstorage
+  refreshLocalStorageTasks(tasks)
+}
+
+export { addAction, deleteAction, completeAction }
