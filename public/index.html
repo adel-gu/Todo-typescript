@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
     <script type="module" src="dist/index.js" defer></script>
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Todo</title>
   </head>
   <body class="relative flex flex-col h-screen text-slate-100">
@@ -20,6 +38,7 @@
               type="text"
               name="title"
               id="title"
+              placeholder="Enter Task..."
               class="grow bg-slate-800 outline-none text-lg ps-6"
               required
             />
