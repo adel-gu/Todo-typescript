@@ -1,5 +1,5 @@
 import { tasksFromLS } from "./modules/localstorage"
-import { addAction, completeAction, deleteAction } from "./modules/taskActions"
+import { addAction, completeAction, deleteAction, editAction } from "./modules/taskActions"
 import { renderTasks } from "./modules/taskRendering"
 import Task from "./modules/types"
 
@@ -23,10 +23,15 @@ document.addEventListener("click", () => {
   }
 })
 
-// Complete Task
+// Complete/Edit Task
 document.addEventListener("input", () => {
   if (document.activeElement?.classList.contains("check-completed")) {
     const checkbox = document.activeElement as HTMLInputElement
     completeAction(checkbox, taskContainer)
+  }
+
+  if (document.activeElement?.classList.contains("task-title")) {
+    const taskP = document.activeElement as HTMLParagraphElement
+    editAction(taskP, taskContainer)
   }
 })
